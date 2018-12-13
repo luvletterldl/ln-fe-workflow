@@ -5,14 +5,13 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Production',
-
       // <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
       meta: [{
         name: 'viewport',
@@ -25,7 +24,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-      }
+      },
     ]
   },
   output: {

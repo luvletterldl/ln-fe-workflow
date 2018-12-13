@@ -35,8 +35,10 @@ module.exports = merge(common, {
       {
         test: /\.styl$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          'stylus-loader',
+          {loader: MiniCssExtractPlugin.loader},
+          'css-loader',
+          'postcss-loader',
+          'stylus-loader'
         ]
       }
     ]
