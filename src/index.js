@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './app/app.vue'
 
-import './app/app.styl'
+// import './app/app.styl'
+var css = require('./app/app.styl')
 
 const root = document.createElement('div')
 document.body.appendChild(root)
