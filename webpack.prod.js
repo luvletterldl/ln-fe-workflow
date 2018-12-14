@@ -10,8 +10,9 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
+        test: /\.js(\?.*)?$/i,
+        cache: true, // 开启缓存
+        parallel: true, // 多线程构建
         sourceMap: true // set to true if you want JS source maps
       }),
       new OptimizeCSSAssetsPlugin({})
