@@ -7,8 +7,6 @@ module.exports = {
       vendor: [
         'vue',
         'vue-loader',
-        'vue-style-loader',
-        'vue-template-compiler',
       ]
     },
     output: {
