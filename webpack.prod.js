@@ -3,6 +3,11 @@ const common = require('./webpack.common.js');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Os = require('os')
+const HappyPack = require('happypack')
+// 手动创建进程池
+const happyThreadPool =  HappyPack.ThreadPool({ size: Os.cpus().length })
 
 module.exports = merge(common, {
   mode: 'production',
@@ -22,6 +27,14 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
+    }),
+    new BundleAnalyzerPlugin(),
+    new HappyPack({
+      // 这个HappyPack的“名字”就叫做happyBabel，和楼上的查询参数遥相呼应
+      id: 'happyBabel',
+      // 指定进程池
+      threadPool: happyThreadPool,
+      loaders: ['babel-loader?cacheDirectory']
     })
   ],
   module: {
@@ -43,7 +56,11 @@ module.exports = merge(common, {
           'postcss-loader',
           'stylus-loader'
         ]
-      }
+      },
+      {
+        test: /\.js$/,
+        loader: 'happypack/loader?id=happyBabel',
+      },
     ]
   }
 });
