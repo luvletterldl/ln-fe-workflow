@@ -8,7 +8,11 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    // 手机和电脑连接统一局域网可用手机调试
+    host: '0.0.0.0',
+    port: 8080,
+    disableHostCheck: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
