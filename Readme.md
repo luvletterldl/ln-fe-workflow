@@ -1,4 +1,7 @@
 ## webpack4 + vue2.x + webpack-dev-server 前端工作流基本形态
+
+### 0.install
+npm i
 ### 1.dev
 npm run start
 ### 2.prod

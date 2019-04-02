@@ -3,7 +3,7 @@ const common = require('./webpack.common.js');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Os = require('os')
 const HappyPack = require('happypack')
 // 手动创建进程池
@@ -28,7 +28,7 @@ module.exports = merge(common, {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new HappyPack({
       // 这个HappyPack的“名字”就叫做happyBabel，和楼上的查询参数遥相呼应
       id: 'happyBabel',
